@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.Random;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import models.Processos;
 
@@ -39,6 +41,15 @@ public class ProcessosController {
 
     public static void sjf(Processos p1, Processos p2, Processos p3) throws InterruptedException {
 
+        filaProcessos.add(p1);
+        filaProcessos.add(p2);
+        filaProcessos.add(p3);
+
+        Collections.sort((List<Processos>) filaProcessos);
+
+        while (!filaProcessos.isEmpty()) {
+
+        }
     }
 
 }

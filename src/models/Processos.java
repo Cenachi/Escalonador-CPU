@@ -1,8 +1,9 @@
 package models;
 
-public class Processos {
+public class Processos implements Comparable<Processos> {
+
     private String name;
-    private int time;    
+    private int time;
     private boolean interrupted;
     private int timeSpent;
 
@@ -46,5 +47,15 @@ public class Processos {
 
     public void setTimeSpent(int timeSpent) {
         this.timeSpent = timeSpent;
+    }
+
+    @Override
+    public int compareTo(Processos outroProcesso) {
+        if (this.time > outroProcesso.getTime()) {
+            return 1;
+        } else if (this.time < outroProcesso.getTime()) {
+            return -1;
+        }
+        return 0;
     }
 }

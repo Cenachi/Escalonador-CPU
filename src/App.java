@@ -9,7 +9,7 @@ public class App {
 
         ProcessosController pController = new ProcessosController();
         System.out.println("Iniciando escalonamento FCFS:");
-        pController.fcfs(p1, p2, p3);
+       // pController.fcfs(p1, p2, p3);
 
         System.out.println("Iniciando escalonamento SJF"); 
         pController.sjf(p1, p2, p3);
