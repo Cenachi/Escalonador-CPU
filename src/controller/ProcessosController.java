@@ -49,7 +49,37 @@ public class ProcessosController {
 
         while (!filaProcessos.isEmpty()) {
 
+            Processos p = filaProcessos.remove();
+            Collections.sort((List<Processos>) filaProcessos);
+
+            if (p.getInterrupted()) {
+                int interrupted = random.nextInt(p.getTime()) + 1;
+
+                for (int j = 0; j < interrupted; j++) {
+                    System.out.print("\r" + p.getName() + " em: " + j + "s");
+                    Thread.sleep(1000);
+                }
+                filaProcessos.add(new Processos(p.getName(), p.getTime(), false, interrupted));
+
+            } else {
+                for (int i = p.getTimeSpent(); i <= p.getTime(); i++) {
+                    System.out.print("\r" + p.getName() + " em: " + i + "s");
+                    Thread.sleep(1000);
+                }
+            }
+            System.out.println();
         }
     }
 
+    public static void srt(Processos p1, Processos p2, Processos p3) throws InterruptedException {
+
+    }
+
+    public static void duling(Processos p1, Processos p2, Processos p3) throws InterruptedException {
+
+    }
+
+    public static void rr(Processos p1, Processos p2, Processos p3) throws InterruptedException {
+
+    }
 }
