@@ -5,20 +5,20 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import models.Processos;
+import models.Processo;
 
-public class ProcessosController {
-    static Queue<Processos> filaProcessos = new LinkedList<Processos>();
+public class ProcessoController {
+    static Queue<Processo> readyQueue = new LinkedList<Processo>();
     static Random random = new Random();
 
-    public static void fcfs(Processos p1, Processos p2, Processos p3) throws InterruptedException {
-        filaProcessos.add(p1);
-        filaProcessos.add(p2);
-        filaProcessos.add(p3);
+    public static void fcfs(Processo p1, Processo p2, Processo p3) throws InterruptedException {
+        readyQueue.add(p1);
+        readyQueue.add(p2);
+        readyQueue.add(p3);
 
-        while (!filaProcessos.isEmpty()) {
+        while (!readyQueue.isEmpty()) {
 
-            Processos p = filaProcessos.remove();
+            Processo p = readyQueue.remove();
 
             if (p.getInterrupted()) {
                 int interrupted = random.nextInt(p.getTime()) + 1;
@@ -27,7 +27,7 @@ public class ProcessosController {
                     System.out.print("\r" + p.getName() + " em: " + j + "s");
                     Thread.sleep(1000);
                 }
-                filaProcessos.add(new Processos(p.getName(), p.getTime(), false, interrupted));
+                readyQueue.add(new Processo(p.getName(), p.getTime(), false, interrupted));
 
             } else {
                 for (int i = p.getTimeSpent(); i <= p.getTime(); i++) {
@@ -39,18 +39,18 @@ public class ProcessosController {
         }
     }
 
-    public static void sjf(Processos p1, Processos p2, Processos p3) throws InterruptedException {
+    public static void sjf(Processo p1, Processo p2, Processo p3) throws InterruptedException {
 
-        filaProcessos.add(p1);
-        filaProcessos.add(p2);
-        filaProcessos.add(p3);
+        readyQueue.add(p1);
+        readyQueue.add(p2);
+        readyQueue.add(p3);
 
-        Collections.sort((List<Processos>) filaProcessos);
+        Collections.sort((List<Processo>) readyQueue);
 
-        while (!filaProcessos.isEmpty()) {
+        while (!readyQueue.isEmpty()) {
 
-            Processos p = filaProcessos.remove();
-            Collections.sort((List<Processos>) filaProcessos);
+            Processo p = readyQueue.remove();
+            Collections.sort((List<Processo>) readyQueue);
 
             if (p.getInterrupted()) {
                 int interrupted = random.nextInt(p.getTime()) + 1;
@@ -59,7 +59,7 @@ public class ProcessosController {
                     System.out.print("\r" + p.getName() + " em: " + j + "s");
                     Thread.sleep(1000);
                 }
-                filaProcessos.add(new Processos(p.getName(), p.getTime(), false, interrupted));
+                readyQueue.add(new Processo(p.getName(), p.getTime(), false, interrupted));
 
             } else {
                 for (int i = p.getTimeSpent(); i <= p.getTime(); i++) {
@@ -71,15 +71,15 @@ public class ProcessosController {
         }
     }
 
-    public static void srt(Processos p1, Processos p2, Processos p3) throws InterruptedException {
+    public static void srt(Processo p1, Processo p2, Processo p3) throws InterruptedException {
 
     }
 
-    public static void duling(Processos p1, Processos p2, Processos p3) throws InterruptedException {
+    public static void duling(Processo p1, Processo p2, Processo p3) throws InterruptedException {
 
     }
 
-    public static void rr(Processos p1, Processos p2, Processos p3) throws InterruptedException {
+    public static void rr(Processo p1, Processo p2, Processo p3) throws InterruptedException {
 
     }
 }

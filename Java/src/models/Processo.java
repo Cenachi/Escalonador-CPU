@@ -1,16 +1,16 @@
 package models;
 
-public class Processos implements Comparable<Processos> {
+public class Processo implements Comparable<Processo> {
 
     private String name;
     private int time;
     private boolean interrupted;
     private int timeSpent;
 
-    public Processos() {
+    public Processo() {
     }
 
-    public Processos(String name, int time, boolean interrupted, int timeSpent) {
+    public Processo(String name, int time, boolean interrupted, int timeSpent) {
         this.name = name;
         this.time = time;
         this.interrupted = interrupted;
@@ -50,7 +50,7 @@ public class Processos implements Comparable<Processos> {
     }
 
     @Override
-    public int compareTo(Processos outroProcesso) {
+    public int compareTo(Processo outroProcesso) {
         if (this.time > outroProcesso.getTime()) {
             return 1;
         } else if (this.time < outroProcesso.getTime()) {
