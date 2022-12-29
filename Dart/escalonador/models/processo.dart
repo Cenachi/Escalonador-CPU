@@ -3,13 +3,9 @@ class Processo {
   int time = 0;
   bool interrupted = false;
   int timeSpent = 0;
+  int stopInterruptionTime=0;
 
-  Processo(
-    this.name,
-    this.time,
-    this.interrupted,
-    this.timeSpent
-  );
+  Processo(this.name, this.time, this.interrupted, this.timeSpent,this.stopInterruptionTime);
 
   String get getName {
     return name;
@@ -41,5 +37,13 @@ class Processo {
 
   set setTimeSpent(int timeSpent) {
     setTimeSpent = timeSpent;
+  }
+
+  int get getTimeInterrupted{
+    return stopInterruptionTime;
+  }
+
+  set setTimeInterrupted(int timeInterrupted) {
+    setTimeInterrupted = timeInterrupted;
   }
 }
