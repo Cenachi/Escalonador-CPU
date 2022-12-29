@@ -1,4 +1,4 @@
-class Processo implements Comparable<Processo> {
+class Processo {
   String name = "";
   int time = 0;
   bool interrupted = false;
@@ -41,14 +41,5 @@ class Processo implements Comparable<Processo> {
 
   set setTimeSpent(int timeSpent) {
     setTimeSpent = timeSpent;
-  }
-
-  int compareTo(Processo outroProcess) {
-    if (this.time > outroProcess.getTime) {
-      return 1;
-    } else if (this.time < outroProcess.getTime) {
-      return -1;
-    }
-    return 0;
   }
 }
