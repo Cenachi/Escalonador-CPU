@@ -1,4 +1,4 @@
-package controller;
+package services;
 
 import java.util.Random;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 import models.Processo;
 
-public class ProcessoController {
+public class ProcessoService {
     static Queue<Processo> readyQueue = new LinkedList<Processo>();
     static Random random = new Random();
 
