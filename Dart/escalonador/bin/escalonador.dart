@@ -1,4 +1,4 @@
-import '../fcfs/services/fcfs-service.dart';
+import '../fcfs/services/fcfs_service.dart';
 import '../sjf/services/sjf_service.dart';
 import '../models/processo.dart';
 import '../srt/services/srt_service.dart';
@@ -10,11 +10,11 @@ void main(List<String> arguments) {
 
   print('\nIniciando escalonador FCFS..');
   FcfsService serviceFCFS = FcfsService();
-  serviceFCFS.fcfs(p1, p2, p3);
+  //serviceFCFS.fcfs(p1, p2, p3);
 
   print('\nIniciando escalonador SJF..');
   SjfService serviceSJF = SjfService();
-  //serviceSJF.sjf(p1, p2, p3);
+  serviceSJF.sjf(p1, p2, p3);
 
   print('\nIniciando escalonador SRT..');
   SrtService serviceSRT = SrtService();
