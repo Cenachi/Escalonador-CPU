@@ -17,7 +17,6 @@ class SjfService {
 
     int currentTime = 0;
 
-    //Implementar ociosidade..
     while (readyQueue.isNotEmpty) {
       Processo p = readyQueue.removeFirst();
       readyQueue.sort(((a, b) => a.getTime.compareTo(b.getTime)));
@@ -61,7 +60,7 @@ class SjfService {
             print('\r${p.getName} finalizado em: $currentTime s');
           }
         }
-      }      
+      }
     }
     print('Tempo total: $currentTime');
   }
