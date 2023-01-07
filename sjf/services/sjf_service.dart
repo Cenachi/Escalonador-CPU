@@ -13,51 +13,51 @@ class SjfService {
     readyQueue.add(p2);
     readyQueue.add(p3);
 
-    readyQueue.sort(((a, b) => a.getTime.compareTo(b.getTime)));
+    readyQueue.sort(((a, b) => a.burstTime.compareTo(b.burstTime)));
 
     int currentTime = 0;
 
     while (readyQueue.isNotEmpty) {
       Processo p = readyQueue.removeFirst();
-      readyQueue.sort(((a, b) => a.getTime.compareTo(b.getTime)));
+      readyQueue.sort(((a, b) => a.burstTime.compareTo(b.burstTime)));
 
-      if (p.getInterrupted) {
-        int interrupted = random.nextInt(p.getTime);
+      if (p.hasInterruption) {
+        int interrupted = random.nextInt(p.burstTime);
         int timeInterrupted = random.nextInt(15);
 
         for (int i = 0; i <= interrupted; i++) {
           if (i != 0) {
-            stdout.write('\r${p.getName} em: $i s');
+            stdout.write('\r${p.name} em: $i s');
             currentTime++;
           }
           sleep(Duration(seconds: 1));
         }
-        readyQueue.add(Processo(p.getName, p.getTime, false, interrupted + 1,
+        readyQueue.add(Processo(p.name, p.burstTime, false, interrupted + 1,
             timeInterrupted + currentTime));
 
-        print('\r${p.getName} foi interrompido em: $currentTime s');
+        print('\r${p.name} foi interrompido em: $currentTime s');
       } else {
-        for (int i = p.getTimeSpent; i <= p.getTime; i++) {
-          if (p.stopInterruptionTime > currentTime) {
-            stdout.write('\r${p.getName} está interrompido!');
+        for (int i = p.timeSpent; i <= p.burstTime; i++) {
+          if (p.returnTime > currentTime) {
+            stdout.write('\r${p.name} está interrompido!');
             sleep(Duration(seconds: 1));
             currentTime++;
             readyQueue.add(p);
             break;
           }
 
-          if (p.stopInterruptionTime == currentTime) {
+          if (p.returnTime == currentTime) {
             print('');
           }
 
           if (i != 0) {
-            stdout.write('\r${p.getName} em: $i s');
+            stdout.write('\r${p.name} em: $i s');
             currentTime++;
           }
           sleep(Duration(seconds: 1));
 
-          if (i == p.getTime) {
-            print('\r${p.getName} finalizado em: $currentTime s');
+          if (i == p.burstTime) {
+            print('\r${p.name} finalizado em: $currentTime s');
           }
         }
       }
