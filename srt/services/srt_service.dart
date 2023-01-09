@@ -1,18 +1,12 @@
-import 'dart:math';
-//import 'dart:io';
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
+import 'dart:math';
 import '../../models/processo_srt.dart';
 
 class SrtService {
   Random random = Random();
-  QueueList<ProcessoSRT> readyQueue = QueueList<ProcessoSRT>();
 
-  void srt(ProcessoSRT p1, ProcessoSRT p2, ProcessoSRT p3) {
-    readyQueue.add(p1);
-    readyQueue.add(p2);
-    //readyQueue.add(p3);
-
+  void srt(QueueList<ProcessoSRT> readyQueue) {
     readyQueue.sort(((a, b) => a.burstTime.compareTo(b.burstTime)));
 
     int currentTime = 0;

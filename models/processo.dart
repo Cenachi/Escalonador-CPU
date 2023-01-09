@@ -5,11 +5,11 @@ class Processo {
   int timeSpent = 0;
   int returnTime = 0;
 
-  Processo(
-    this.name,
-    this.burstTime,
-    this.hasInterruption,
-    this.timeSpent,
-    this.returnTime,
-  );
+  Processo({
+    required this.name,
+    required this.burstTime,
+    required this.hasInterruption,
+    required this.timeSpent,
+    required this.returnTime,
+  });
 }

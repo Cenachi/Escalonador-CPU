@@ -6,13 +6,8 @@ import 'dart:io';
 
 class DulingService {
   Random random = Random();
-  QueueList<Processo> readyQueue = QueueList<Processo>();
 
-  void duling(Processo p1, Processo p2, Processo p3) {
-    readyQueue.add(p1);
-    readyQueue.add(p2);
-    readyQueue.add(p3);
-
+  void duling(QueueList<Processo> readyQueue) {
     readyQueue.sort(((a, b) => b.burstTime.compareTo(a.burstTime)));
 
     int currentTime = 0;
@@ -32,8 +27,13 @@ class DulingService {
           }
           sleep(Duration(seconds: 1));
         }
-        readyQueue.add(Processo(p.name, p.burstTime, false, interrupted + 1,
-            timeInterrupted + currentTime));
+        readyQueue.add(Processo(
+          name: p.name,
+          burstTime: p.burstTime,
+          hasInterruption: false,
+          timeSpent: interrupted + 1,
+          returnTime: timeInterrupted + currentTime,
+        ));
 
         print('\r${p.name} foi interrompido em: $currentTime s');
       } else {
